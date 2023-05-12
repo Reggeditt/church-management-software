@@ -1,3 +1,5 @@
-const Members = () => {};
+const Members = () => {
+  return <div>Members Page</div>
+};
 
 export default Members;
