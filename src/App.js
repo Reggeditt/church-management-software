@@ -14,7 +14,49 @@ import { Content, Header } from 'antd/es/layout/layout';
 import Sider from 'antd/es/layout/Sider';
 import MenuComponent from './components/Menu';
 import TitleBlock from './components/Title';
+import { LoadMembersData } from './redux/members/membersSlice';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { faker } from '@faker-js/faker';
+
+
 function App() {
+  const dispatch = useDispatch();
+
+  const generateData = () => {
+    const membersData = [];
+
+    for(let i = 0; i < 100; i++) {
+      membersData.push({
+        id: i,
+        name: faker.person.fullName(),
+        email: faker.internet.email(),
+        phone: faker.phone.number(),
+        photo: faker.image.avatar(),
+        status: "active",
+        address: faker.location.streetAddress(),
+        city: faker.location.city(),
+        dob: faker.date.birthdate(),
+        jobArea: faker.person.jobArea(),
+        jobType: faker.person.jobType(),
+        jobTitle: faker.person.jobTitle(),
+        jobDescription: faker.person.jobDescriptor(),
+        sex: faker.person.sex(),
+        landmarks: [faker.location.cardinalDirection(), faker.location.cardinalDirection()],
+        roles: ['member'],
+        Portfolios: [],
+        groups: ["group1", "group2"],
+        ministries: ["ministry1", "ministry2"],
+        payments: [],
+      });
+    }
+    return membersData;
+  };
+  useEffect(() => {
+    const membersData = generateData();
+    dispatch(LoadMembersData(membersData));
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Layout className="container-wrap">
@@ -46,15 +88,3 @@ function App() {
 }
 
 export default App;
-
-
-{/* <Button type='primary'>My button</Button>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/members" element={<Members />} />
-        <Route path="/ministries" element={<Ministries />} />
-        <Route path="/finance" element={<Finance />} />
-        <Route path="/groups" element={<Groups />} />
-        <Route path="/events" element={<Events />} />
-      </Routes> */}
