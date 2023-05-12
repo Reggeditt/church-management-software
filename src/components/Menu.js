@@ -1,5 +1,13 @@
 import Menu from "antd/es/menu";
 import { Link } from "react-router-dom";
+import { IoIosPeople } from "react-icons/io";
+import { BiCalendarEvent, BiChild, BiMaleFemale } from "react-icons/bi";
+import { MdGroupWork, MdLibraryMusic, MdEngineering, MdCelebration, MdEmojiEvents } from "react-icons/md";
+import { VscGroupByRefType } from "react-icons/vsc";
+import { FaMoneyCheckAlt, FaPray, FaChild, FaMale, FaFemale } from "react-icons/fa";
+import { RiServiceFill, RiCommunityFill } from "react-icons/ri";
+import { BsUnity } from "react-icons/bs";
+
 
 const MenuComponent = () => {
   return (
@@ -11,7 +19,7 @@ const MenuComponent = () => {
             <Link to={'/members'}>Members</Link>
           ),
           key: "members",
-          icon: "",
+          icon: <IoIosPeople />,
           children: [],
         },
         {
@@ -19,22 +27,22 @@ const MenuComponent = () => {
             <Link to={'/events'}>Events</Link>
           ),
           key: "events",
-          icon: "",
+          icon: <BiCalendarEvent />,
           children: [
             {
               label: "Services",
               key: "services",
-              icon: "",
+              icon: <RiCommunityFill/>,
             },
             {
               label: "Celebrations",
               key: "celebrations",
-              icon: "",
+              icon: <MdCelebration/>,
             },
             {
               label: "Special Programs",
               key: "special_programs",
-              icon: "",
+              icon: <MdEmojiEvents/>,
             },
           ],
         },
@@ -43,27 +51,27 @@ const MenuComponent = () => {
             <Link to={'/ministries'}>Ministries</Link>
           ),
           key: "minstries",
-          icon: "",
+          icon: <MdGroupWork />,
           children: [
             {
               label: "Music",
               key: "music_ministry",
-              icon: "",
+              icon: <MdLibraryMusic />,
             },
             {
               label: "Media & Technical",
               key: "media_technical_ministry",
-              icon: "",
+              icon: <MdEngineering />,
             },
             {
               label: "Protocol",
               key: "protocol_ministry",
-              icon: "",
+              icon: <RiServiceFill/>,
             },
             {
               label: "Intercessory",
               key: "intercessory_ministry",
-              icon: "",
+              icon: <FaPray />,
             },
           ],
         },
@@ -72,37 +80,37 @@ const MenuComponent = () => {
             <Link to={'/groups'}>Groups</Link>
           ),
           key: "groups",
-          icon: "",
+          icon: <VscGroupByRefType />,
           children: [
             {
               label: "Children",
               key: "children",
-              icon: "",
+              icon: <BiChild/>,
             },
             {
               label: "Youth",
               key: "youth",
-              icon: "",
+              icon: <FaChild/>,
             },
             {
               label: "Singles",
               key: "singles",
-              icon: "",
+              icon: <BiMaleFemale/>,
             },
             {
               label: "Men's Fellowship",
               key: "men",
-              icon: "",
+              icon: <FaMale/>,
             },
             {
               label: "Women's Fellowship",
               key: "women",
-              icon: "",
+              icon: <FaFemale/>,
             },
             {
               label: "DayBorn Groups",
               key: "women",
-              icon: "",
+              icon: <BsUnity/>,
             },
           ],
         },
@@ -111,7 +119,7 @@ const MenuComponent = () => {
             <Link to={'/finance'}>Finance</Link>
           ),
           key: "acounts",
-          icon: "",
+          icon: <FaMoneyCheckAlt />,
           children: [
             // {
             //   label: "Income",
