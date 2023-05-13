@@ -4,13 +4,12 @@ import { useSelector } from "react-redux";
 
 const Members = () => {
   const members = useSelector((state) => state.members);
-  console.log(members);
   return (
     <>
       <Space direction="horizontal"></Space>
       <Divider />
       <Row>
-        <Col span={24}>
+        <Col span={24} style={{overflow: "scroll"}}>
           <Table
             dataSource={members.membersInfo}
             columns={[

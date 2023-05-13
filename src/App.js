@@ -1,15 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Home from './routes/Home';
 import Members from './routes/Members';
 import Ministries from './routes/Ministries';
 import Finance from './routes/Finance';
 import Groups from './routes/Groups';
 import Events from './routes/Events';
-
 import 'antd/dist/antd.js'
-import { Button, Layout } from 'antd';
+import { FloatButton, Layout } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import Sider from 'antd/es/layout/Sider';
 import MenuComponent from './components/Menu';
@@ -18,14 +17,20 @@ import { LoadMembersData } from './redux/members/membersSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { faker } from '@faker-js/faker';
+import { MdOutlineAdd } from "react-icons/md";
+import { AiOutlineClose, AiOutlineUserAdd } from "react-icons/ai";
+import { FaUsers } from 'react-icons/fa';
+import { BiCalendarEvent } from "react-icons/bi";
+import { MdGroupWork } from "react-icons/md";
+import { useState } from "react";
+
 
 
 function App() {
   const dispatch = useDispatch();
-
+  const [display, setDisplay] = useState(false);
   const generateData = () => {
     const membersData = [];
-
     for(let i = 0; i < 100; i++) {
       membersData.push({
         id: i,
@@ -83,6 +88,29 @@ function App() {
           </Content>
         </Layout>
       </Layout>
+      <FloatButton
+        shape="circle"
+        style={{
+          right: 10,
+        }}
+        onClick={() => setDisplay(!display)}
+        icon={<MdOutlineAdd />}
+      />
+      <FloatButton.Group
+        shape="square"
+        onClick={() => setDisplay(!display)}
+        style={{
+          right: 10,
+          display: display ? "block" : "none",
+        }}
+      >
+        {/* <FloatButton icon={<MdOutlineAdd />} /> */}
+        <FloatButton tooltip="add new event" icon={<BiCalendarEvent />}/>
+        <FloatButton tooltip="add new group" icon={<MdGroupWork />}/>
+        <FloatButton tooltip="add new ministry" icon={<FaUsers />}/>
+        <FloatButton tooltip="add new member" icon={<AiOutlineUserAdd />}/>
+        <FloatButton icon={<AiOutlineClose />} onClick={() => setDisplay(!display)} />
+      </FloatButton.Group>
     </div>
   );
 }
