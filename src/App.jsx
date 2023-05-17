@@ -47,7 +47,6 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      // setOpen(false);
       if (buttonName === "member")
         setOpenMemberForm(false);
       else if (buttonName === "event")
@@ -59,7 +58,6 @@ function App() {
     }, 3000);
   };
   const handleCancel = (buttonName) => {
-    // setOpen(false);
     if (buttonName === "member")
       setOpenMemberForm(false);
     else if (buttonName === "event")
@@ -77,6 +75,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* main layout of the dashboard is rendered here */}
       <Layout className="container-wrap">
         <Header style={{
           backgroundColor: "#fff",
@@ -101,6 +100,8 @@ function App() {
           </Content>
         </Layout>
       </Layout>
+
+      {/* floating button for adding new items || it handles the opening of the button group */}
       <FloatButton
         shape="circle"
         style={{
@@ -109,6 +110,8 @@ function App() {
         onClick={() => setDisplay(!display)}
         icon={<MdOutlineAdd />}
       />
+
+      {/* floating button group for adding new items || contains buttons for adding, members, events, groups, ministries, and a close button for the button group */}
       <FloatButton.Group
         shape="square"
         onClick={() => setDisplay(!display)}
@@ -135,6 +138,8 @@ function App() {
           }}/>
         <FloatButton icon={<AiOutlineClose />} onClick={() => setDisplay(!display)} />
       </FloatButton.Group>
+
+      {/* modals for adding new items || there are four modals. One each for membersForm, eventsForm, groupForm, and ministryForm. these forms are for adding new records */}
       <Modal
         open={openMemeberForm}
         title="Add new member"
@@ -160,6 +165,7 @@ function App() {
       >
         <MemberForm />
       </Modal>
+
       <Modal
         open={openEventForm}
         title="Add new event"
@@ -185,6 +191,7 @@ function App() {
       >
         <MemberForm />
       </Modal>
+
       <Modal
         open={openGroupForm}
         title="Add new group"
@@ -211,6 +218,7 @@ function App() {
         <h3>member add</h3>
         {/* <MemberForm /> */}
       </Modal>
+
       <Modal
         open={openMinistriesForm}
         title="Add new Ministry"

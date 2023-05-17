@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Form, Input, InputNumber, DatePicker, Select } from 'antd';
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -70,7 +70,7 @@ const MemberForm = () => {
         name="phone"
         label="Phone"
       >
-        <Input />
+        <InputNumber />
       </Form.Item>
       <Form.Item
         name="address"
@@ -128,14 +128,14 @@ const MemberForm = () => {
         name="dob"
         label="Date of Birth"
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         name="age"
         label="Age"
         rules={[{ required: true }]}
       >
-        <Input />
+        <InputNumber />
       </Form.Item>
       <Form.Item
         name="occupation"
