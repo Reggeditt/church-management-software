@@ -12,7 +12,6 @@ import { Content, Header } from 'antd/es/layout/layout';
 import Sider from 'antd/es/layout/Sider';
 import MenuComponent from './components/Menu';
 import TitleBlock from './components/Title';
-import { LoadMembersData } from './redux/members/membersSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { MdOutlineAdd } from "react-icons/md";
@@ -21,8 +20,8 @@ import { FaUsers } from 'react-icons/fa';
 import { BiCalendarEvent } from "react-icons/bi";
 import { MdGroupWork } from "react-icons/md";
 import { useState } from "react";
-import generateData from './components/generateFakeData';
 import MemberForm from './components/addMemberForm';
+import { fetchMembersData } from './redux/members/membersSlice';
 
 
 function App() {
@@ -69,8 +68,7 @@ function App() {
   };
 
   useEffect(() => {
-    const membersData = generateData();
-    dispatch(LoadMembersData(membersData));
+    dispatch(fetchMembersData());
   }, [dispatch]);
 
   return (

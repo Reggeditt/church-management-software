@@ -1,4 +1,6 @@
 import { Button, Form, Input, InputNumber, DatePicker, Select } from 'antd';
+import { postMemberData, updateMemberData } from '../redux/members/membersSlice';
+import { useDispatch } from 'react-redux';
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -16,6 +18,7 @@ const tailLayout = {
 };
 
 const MemberForm = () => {
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
   const onGenderChange = (value) => {
     switch (value) {
@@ -39,6 +42,8 @@ const MemberForm = () => {
   };
   const onFinish = (values) => {
     console.log(values);
+    dispatch(postMemberData(values));
+    dispatch(updateMemberData(values));
   };
   const onReset = () => {
     form.resetFields();
@@ -60,8 +65,22 @@ const MemberForm = () => {
       }}
     >
       <Form.Item
-        name="name"
-        label="Full Name"
+        name="first_name"
+        label="First Name"
+        rules={[{ required: true }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="middle_name"
+        label="Middle Name"
+        rules={[{ required: false }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="last_name"
+        label="Last Name"
         rules={[{ required: true }]}
       >
         <Input />
@@ -75,12 +94,26 @@ const MemberForm = () => {
       <Form.Item
         name="address"
         label="Address"
+        rules={[{ required: false }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="city"
+        label="Location"
         rules={[{ required: true }]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name="gender"
+        name="landmark"
+        label="Landmark"
+        rules={[{ required: true }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="sex"
         label="Gender"
         rules={[
           {
@@ -138,14 +171,14 @@ const MemberForm = () => {
         <InputNumber />
       </Form.Item>
       <Form.Item
-        name="occupation"
+        name="job_title"
         label="Occupation"
         rules={[{ required: true }]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name="jobtype"
+        name="job_type"
         label="Job Type"
       >
         <Input />
